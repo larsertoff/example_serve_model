@@ -1,5 +1,4 @@
 import flask
-import textblob
 
 def create_app(config_name= 'dev_config.py'):
     '''
@@ -13,7 +12,6 @@ def create_app(config_name= 'dev_config.py'):
     # Make config proper here
     app.config['SECRET_KEY'] = '123456'
     
-
     # Import main page blueprint
     from app.main_page import main_page
     app.register_blueprint(main_page)
