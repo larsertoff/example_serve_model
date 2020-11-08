@@ -1,4 +1,5 @@
 import flask
+import textblob
 
 def create_app(config_name= 'dev_config.py'):
 
