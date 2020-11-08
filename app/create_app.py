@@ -2,17 +2,20 @@ import flask
 import textblob
 
 def create_app(config_name= 'dev_config.py'):
+    '''
+    App factory
+    '''
 
 
-
+    # Initialize app
     app = flask.Flask(__name__)
 
+    # Make config proper here
     app.config['SECRET_KEY'] = '123456'
-    # I only need one simple route for this for now
-    @app.route('/')
-    def before_doing_anything():
-        test = textblob.TextBlob("Textblob is amazingly simple to use. What great fun!")
-        print(test.sentiment)
-        return str(test.sentiment)
+    
 
+    # Import main page blueprint
+    from app.main_page import main_page
+    app.register_blueprint(main_page)
+    
     return app
