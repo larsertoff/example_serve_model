@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analyzer</title>
     {% block head %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    
+
     <!-- Add favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon255.ico') }}">
 
-        {% endblock %}
+    {% endblock %}
 </head>
-  <body>
 
-    {% block content %}{% endblock %}
+<body>
 
-  </body>
+    <!-- Include navbar-->
+
+    {% include 'navbar.html' %}
+    <section class="hero is-light is-fullheight-with-navbar">
+        <div class="hero-head">
+            <div class="container">
+                {% block heading %}{% endblock %}
+
+                <!-- user message can go in the section -->
+
+            </div>
+        </div>
+
+        <div class="hero-body">
+            <div class="container">
+
+                {% block main %}{% endblock %}
+
+            </div>
+        </div>
+
+    </section>
+</body>
+
 </html>
