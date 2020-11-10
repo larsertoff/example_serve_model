@@ -3,4 +3,3 @@ textblob
 requests
 beautifulsoup4
 pyodbc
-NLTK

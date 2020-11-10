@@ -1,7 +1,5 @@
 import pyodbc
 import flask
-import nltk
-nltk.download()
 
 class Sentimenter:
     def __init__(self, url, header, blob):
@@ -34,7 +32,7 @@ class Sentimenter:
         '''
         try:
             con_str = flask.current_app.config['CONNECTION_STRING']
-            conn = pyodbc.connect(con_str)
+            cnxn = pyodbc.connect(con_str)
             cursor = cnxn.cursor()
             cursor.execute()
             cursor.commit()
