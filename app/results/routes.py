@@ -1,6 +1,8 @@
 import flask
-from app.results import results
 import requests
+import bs4
+from app.results import results
+from app.results.sentimenter import Sentimenter
 
 @results.route('/results', methods=('GET','POST'))
 def results_page():
@@ -18,7 +20,8 @@ def results_page():
         return flask.redirect(flask.url_for('main_page.home_page'))
 
     # parse results using BeautifulSoup
-
+    souped = bs4.BeautifulSoup(www.content, 'html.parser')
+    
     # create TextBlob instance
 
     # process TextBlob text analytics results
