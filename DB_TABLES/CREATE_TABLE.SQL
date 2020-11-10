@@ -1,5 +1,4 @@
 CREATE TABLE results (
-    ID identity(1,1) integer,
+    ID integer identity(1,1),
     WWW nvarchar(250) NOT NULL
-
 )

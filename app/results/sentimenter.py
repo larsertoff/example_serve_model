@@ -1,5 +1,7 @@
 import pyodbc
 import flask
+import nltk
+nltk.download()
 
 class Sentimenter:
     def __init__(self, url, header, blob):
