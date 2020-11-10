@@ -17,6 +17,11 @@ def create_app(config_name= 'dev_config.py'):
     else:
         app.config.from_pyfile(os.path.join(os.getcwd(), 'config', 'dev_config.py'))
     
+    try: 
+        app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+    except:
+        pass
+
     # Import main page blueprint
     from app.main_page import main_page
     app.register_blueprint(main_page)
