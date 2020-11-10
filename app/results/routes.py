@@ -1,10 +1,11 @@
 import flask
 import requests
 import bs4
+import textblob
 from app.results import results
 from app.results.sentimenter import Sentimenter
 
-@results.route('/results', methods=('GET','POST'))
+@results.route('/results', methods=('POST',))
 def results_page():
     url = flask.request.form.get('url')
     print(url)
@@ -22,8 +23,13 @@ def results_page():
     # parse results using BeautifulSoup
     souped = bs4.BeautifulSoup(www.content, 'html.parser')
     
+    if souped.find('h1'):
+        header = souped.find('h1').get_text()
+    else:
+        header = souped.title.get_text()
     # create TextBlob instance
+    blob = textblob.TextBlob(souped.get_text())
 
-    # process TextBlob text analytics results
+    page_results = Sentimenter(www, header, blob)
 
-    return flask.render_template('results.html', page_results={})
+    return flask.render_template('results.html', page_results=page_results)
