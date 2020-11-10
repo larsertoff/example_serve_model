@@ -1,5 +1,5 @@
-
-
+import pyodbc
+import flask
 
 class Sentimenter:
     def __init__(self, url, header, blob):
@@ -25,3 +25,18 @@ class Sentimenter:
 
             if self.most_subjective_sentence.sentiment.subjectivity < sentence.sentiment.subjectivity:
                 self.most_subjective_sentence = sentence
+
+    def save_result(self):
+        '''
+        Simple method to save the result to a database, going without ORM for now
+        '''
+        try:
+            con_str = flask.current_app.config['CONNECTION_STRING']
+            conn = pyodbc.connect(con_str)
+            cursor = cnxn.cursor()
+            cursor.execute()
+            cursor.commit()
+        except:
+            pass
+
+        
