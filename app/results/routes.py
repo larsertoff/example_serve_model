@@ -10,10 +10,12 @@ def results_page():
     try:
         # fetch page associated with url using requests
         www = requests.get(url)
-        print(www)    
+        if www.status_code != 200:
+            raise RuntimeError()
     except:
         # Give error message that this was an invalid url
-        pass
+        flask.flash('Invalid url. Please fix and resubmit.')
+        return flask.redirect(flask.url_for('main_page.home_page'))
 
     # parse results using BeautifulSoup
 

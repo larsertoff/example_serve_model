@@ -22,10 +22,20 @@
     {% include 'navbar.html' %}
     <section class="hero is-light is-fullheight-with-navbar">
         <div class="hero-head">
-            <div class="container">
+            <div class="container has-text-centered">
                 {% block heading %}{% endblock %}
 
                 <!-- user message can go in the section -->
+
+
+                {% for message in get_flashed_messages() %}
+                <article class="message is-centered" style="width: 500px; margin: auto;">
+                    <div class="message-body">
+                        <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                </article>
+
 
             </div>
         </div>
