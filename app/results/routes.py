@@ -31,5 +31,6 @@ def results_page():
     blob = textblob.TextBlob(souped.get_text())
 
     page_results = Sentimenter(www, header, blob)
+    page_results.save_result()
 
     return flask.render_template('results.html', page_results=page_results)

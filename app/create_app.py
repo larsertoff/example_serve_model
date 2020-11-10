@@ -23,9 +23,6 @@ def create_app(config_name= 'dev_config.py'):
     if os.environ.get('CONNECTION_STRING') is not None: 
         app.config['CONNECTION_STRING'] = os.environ.get('CONNECTION_STRING')
     
-    con_str = app.config['CONNECTION_STRING']
-    print(con_str)
-    con = pyodbc.connect(con_str)
 
     # Import main page blueprint
     from app.main_page import main_page
