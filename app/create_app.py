@@ -21,7 +21,7 @@ def create_app(config_name= 'dev_config.py'):
         app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
     if os.environ.get('CONNECTION_STRING') is not None: 
-        app.config['CONNECTION_STRING'] = os.environ.get('ONNECTION_STRING')
+        app.config['CONNECTION_STRING'] = os.environ.get('CONNECTION_STRING')
     
     con_str = app.config['CONNECTION_STRING']
     print(con_str)
