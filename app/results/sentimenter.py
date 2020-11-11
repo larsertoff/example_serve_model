@@ -1,9 +1,10 @@
 import pyodbc
 import flask
+import datetime
 
 class Sentimenter:
-    def __init__(self, url, header, blob):
-        self.url = url
+    def __init__(self, www, header, blob):
+        self.www = www
         self.header = header
 
         self.overall = blob.sentiment 
@@ -34,7 +35,14 @@ class Sentimenter:
             con_str = flask.current_app.config['CONNECTION_STRING']
             cnxn = pyodbc.connect(con_str)
             cursor = cnxn.cursor()
-            cursor.execute()
+            SQLstmt = f'''INSERT INTO results (WWW, HEADER, OVERALL, TIMESTAMP) VALUES 
+            ('{self.www.url}',
+            '{self.header}',
+            '{self.overall}',
+            '{datetime.datetime.now()}'
+            )'''
+
+            cursor.execute(SQLstmt)
             cursor.commit()
         except:
             pass
