@@ -16,7 +16,7 @@ def results_page():
             raise RuntimeError()
     except:
         # Give error message that this was an invalid url
-        flask.flash('Invalid url. Please fix and resubmit.')
+        flask.flash('URL invalid, please try again')
         return flask.redirect(flask.url_for('main_page.home_page'))
 
     # parse results using BeautifulSoup
