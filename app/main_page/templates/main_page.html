@@ -2,9 +2,11 @@
 
 {% block heading %}
 <p class="title has-text-centered">
-    Enter a webpage url for Analysis
+    Welcome to the sentiment analyzer!
 </p>
-
+<p class="has-text-centered">
+    Enter a website on the form https://www.google.no and submit to score the
+</p>
 
 {% endblock %}
 
@@ -17,10 +19,10 @@
         <form action="{{ url_for('results.results_page') }}" method="POST">
             <div class="field has-addons">
                 <div class="control is-expanded">
-                    <input type="text" name="url" class="input" placeholder="http://google.com">
+                    <input type="text" name="url" class="input is-large" placeholder="http://google.com">
                 </div>
                 <div class="control">
-                    <button class="button is-primary">Submit</button>
+                    <button class="button is-dark is-large">Submit</button>
                 </div>
             </div>
         </form>

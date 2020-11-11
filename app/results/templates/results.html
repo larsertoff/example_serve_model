@@ -3,7 +3,7 @@
 {% block heading %}
 <div class="box">
   <p class="title has-text-centered">
-    <a target="_BLANK" href="{{ page_results.www }}">
+    <a target="_BLANK" href="{{ page_results.www.url }}">
       {{ page_results.header }}
     </a>
   </p>
@@ -17,14 +17,14 @@
     <div class="tile is-parent is-6">
       <div class="tile is-child box">
         <p class="title has-text-centered">
-          Overall Polarity: {{ page_results.overall.polarity|round(2) }}
+          Polarity Score: {{ page_results.overall.polarity|round(2) }}
         </p>
       </div>
     </div>
     <div class="tile is-parent is-6">
       <div class="tile is-child box">
         <p class="title has-text-centered">
-          Overall Subjectivity: {{ page_results.overall.subjectivity|round(2) }}
+          Subjectivity Score: {{ page_results.overall.subjectivity|round(2) }}
         </p>
       </div>
     </div>
@@ -36,15 +36,15 @@
         <p class="title has-text-centered">
           Most Polar Sentence: {{ page_results.most_polar_sentence.sentiment.polarity|round(2) }}
         </p>
-        <p class='has-text-centered'>{{ page_results.most_polar_sentence }}</p>
+        <p class='has-text-centered'>{{ page_results.most_polar_sentence|safe|truncate(300) }}</p>
       </div>
     </div>
     <div class="tile is-parent is-6">
       <div class="tile is-child box">
         <p class="title has-text-centered">
-          Least Polar Sentence: {{ page_results.least_polar_sentence.sentiment.polarity|round(2) }}
+          Most Objective Sentence: {{ page_results.most_objective_sentence.sentiment.subjectivity|round(2) }}
         </p>
-        <p class='has-text-centered'>{{ page_results.least_polar_sentence }}</p>
+        <p class='has-text-centered'>{{ page_results.most_objective_sentence |safe|truncate(300)}}</p>
       </div>
     </div>
   </div>
@@ -53,9 +53,9 @@
     <div class="tile is-parent is-6">
       <div class="tile is-child box">
         <p class="title has-text-centered">
-          Most Objective Sentence: {{ page_results.most_objective_sentence.sentiment.subjectivity|round(2) }}
+          Least Polar Sentence: {{ page_results.least_polar_sentence.sentiment.polarity|round(2) }}
         </p>
-        <p class='has-text-centered'>{{ page_results.most_objective_sentence }}</p>
+        <p class='has-text-centered'>{{ page_results.least_polar_sentence|safe|truncate(300) }}</p>
       </div>
     </div>
     <div class="tile is-parent is-6">
@@ -63,7 +63,7 @@
         <p class="title has-text-centered">
           Most Subjective Sentence: {{ page_results.most_subjective_sentence.sentiment.subjectivity|round(2) }}
         </p>
-        <p class='has-text-centered'>{{ page_results.most_subjective_sentence }}</p>
+        <p class='has-text-centered'>{{ page_results.most_subjective_sentence|safe|truncate(300) }}</p>
       </div>
     </div>
   </div>

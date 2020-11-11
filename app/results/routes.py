@@ -8,7 +8,6 @@ from app.results.sentimenter import Sentimenter
 @results.route('/results', methods=('POST',))
 def results_page():
     url = flask.request.form.get('url')
-    print(url)
 
     try:
         # fetch page associated with url using requests
