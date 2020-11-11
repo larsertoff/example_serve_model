@@ -1,9 +1,6 @@
 import flask
 import os
 import pyodbc
-import subprocess
-
-subprocess.call('python -m textblob.download_corpora')
 
 def create_app(config_name= 'dev_config.py'):
     '''
