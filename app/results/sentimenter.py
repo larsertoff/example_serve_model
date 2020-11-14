@@ -27,24 +27,26 @@ class Sentimenter:
             if self.most_subjective_sentence.sentiment.subjectivity < sentence.sentiment.subjectivity:
                 self.most_subjective_sentence = sentence
 
-    def save_result(self):
+    def save_result(self, write_results = False):
         '''
         Simple method to save the result to a database, going without ORM for now
         '''
-        try:
-            con_str = flask.current_app.config['CONNECTION_STRING']
-            cnxn = pyodbc.connect(con_str)
-            cursor = cnxn.cursor()
-            SQLstmt = f'''INSERT INTO results (WWW, HEADER, OVERALL, TIMESTAMP) VALUES 
-            ('{self.www.url}',
-            '{self.header}',
-            '{self.overall}',
-            '{datetime.datetime.now()}'
-            )'''
-
-            cursor.execute(SQLstmt)
-            cursor.commit()
-        except:
+        if write_results == False:
             pass
+        else:
+            try:
+                con_str = flask.current_app.config['CONNECTION_STRING']
+                cnxn = pyodbc.connect(con_str)
+                cursor = cnxn.cursor()
+                SQLstmt = f'''INSERT INTO results (WWW, HEADER, OVERALL, TIMESTAMP) VALUES 
+                ('{self.www.url}',
+                '{self.header}',
+                '{self.overall}',
+                '{datetime.datetime.now()}'
+                )'''
+                cursor.execute(SQLstmt)
+                cursor.commit()
+            except:
+                pass
 
         
